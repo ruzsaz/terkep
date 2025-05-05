@@ -1,5 +1,4 @@
 // Függvények definiálása
-{
 
 	function makeSVG(tag, attrs) {
 		var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -115,19 +114,21 @@
 
 		data.splice(0, 1);
 		var firstId = data[0][0];
-		var mapLevelSelector = "t3"; // ország
-		if (isNaN(parseInt(firstId))) {
-			mapLevelSelector = "t2"; // megye
-		} else if (firstId.length === 4) {
-			mapLevelSelector = "t1"; // kistérség
+		let mapLevelContainer = mapData.map;
+		var mapLevelSelector = "level0"; // ország
+		if (firstId.length === 2) {
+			mapLevelSelector = "level1"; // megye
+		} else if (firstId.length === 3) {
+			mapLevelSelector = "level2"; // kistérség
 		} else if (firstId.length === 5) {
 			mapLevelSelector = "t0"; // település
+			mapLevelContainer = topodata;
 		}
 		minMax = getMinMax();
 		dataToShow = 0;
 		choser.update();
 		legend.update();
-		createMapLayer(mapLevelSelector);
+		createMapLayer(mapLevelContainer, mapLevelSelector);
 		labelG.style.visibility = "hidden";
 		valueG.style.visibility = "hidden";
 		info.update();
@@ -323,11 +324,12 @@
 		refreshLabels();
 	}
 
-	function createMapLayer(level) {
+	function createMapLayer(containerObject, level) {
 		if (geojson) {
 			map.removeLayer(geojson);
 		}
-		baseMap = topojson.feature(topodata, topodata.objects[level]).features;
+		//baseMap = topojson.feature(topodata, topodata.objects[level]).features;
+		baseMap = topojson.feature(containerObject, containerObject.objects[level]).features;
 		geojson = L.geoJson(baseMap, {
 			style: style,
 			onEachFeature: onEachFeature
@@ -360,7 +362,7 @@
 			document.getElementById('helpButton').style="border-style:default;";
 		}
 	}
-}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // Konfigurálható színek.

@@ -22,6 +22,7 @@ and open the template in the editor.
 		<script src="js/cvstoarray.js"></script>
 		<script src="js/libs/saveassvg/saveSvgAsPng.js" type="text/javascript"></script>
 		<script type="text/javascript" src="hun.js"></script>
+		<script type="text/javascript" src="jaras.js"></script>
 		<script src="script.js" type="text/javascript"></script>
 		<form><input id="colorpicker" type="color" name="favcolor"></form>
 		<div id="help" class="leaflet-bottom leaflet-left" onclick="help();">
@@ -32,7 +33,7 @@ and open the template in the editor.
 					<em>Csv-file</em>: A 'csv betöltése' gombbal a saját gépen levő
 					csv fájl olvasható be. A csv első oszlopa
 					a megjelenítendő adatok területi kódját tartalmazza
-					(megye, kistérség vagy településkód, lásd a példafájlokat),
+					(megye, járás vagy településkód, lásd a példafájlokat),
 					a második oszlopban a hozzá tartozó név szerepel.
 					A további oszlopok a megjelenítendő értékeket tartalmazzák számként.
 					A file első sora fejléc, amelyben a szereplő mezők nem tartalmazhatnak szóközt.<br>
@@ -40,7 +41,7 @@ and open the template in the editor.
 					excel-ből copy+paste segítségével közvetlül is megjeleníthető.<br>
 					<em>Példafájlok letöltése</em>:
 					<a href="megyek.csv" download>megyek.csv</a>
-					<a href="kistersegek.csv" download>kistersegek.csv</a>
+					<a href="jarasok.csv" download>jarasok.csv</a>
 					<a href="telepulesek.csv" download>telepulesek.csv</a>.
 					
 					<h3>Skála megváltoztatása</h3>
@@ -61,8 +62,6 @@ and open the template in the editor.
 					a nevek és határok az éppen a képernyőn látható formában
 					lesznek elmentve, de teljesen átlátszatlanul.
 				</div>
-
-
 			</div>
 		</div>
 	</body>
